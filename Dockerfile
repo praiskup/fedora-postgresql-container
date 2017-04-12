@@ -1,4 +1,4 @@
-FROM fedora:25
+FROM registry.fedoraproject.org/fedora:25
 
 # PostgreSQL image for OpenShift.
 # Volumes:
@@ -18,7 +18,14 @@ LABEL io.k8s.description="PostgreSQL is an advanced Object-Relational database m
       io.k8s.display-name="PostgreSQL 9.5" \
       io.openshift.expose-services="5432:postgresql" \
       io.openshift.tags="database,postgresql,postgresql95" \
-      maintainer="Pavel Raiskup <praiskup@redhat.com>"
+      com.redhat.component="postgresql" \
+      maintainer="Pavel Raiskup <praiskup@redhat.com>" \
+      name="$FCG/postgresql" \
+      version="0" \
+      release="1.$DISTTAG" \
+      architecture="x86_64" \
+      usage="Run without arguments to get usage info." \
+      help="/help.1"
 
 EXPOSE 5432
 
